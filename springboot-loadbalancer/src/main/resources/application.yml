@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+sandbox:
+  loadbalancer:
+    client:
+      connection-timeout: 200
+      request-timeout: 200
+      endpoints:
+        - instance: 1
+          url: localhost
+          port: 9080
+        - instance: 2
+          url: localhost
+          port: 9081
