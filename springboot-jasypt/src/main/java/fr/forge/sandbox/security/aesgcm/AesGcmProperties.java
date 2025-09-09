@@ -1,4 +1,4 @@
-package fr.forge.sandbox.security.config;
+package fr.forge.sandbox.security.aesgcm;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "sandbox.security")
-public class SecurityProperties {
-    private String aesSecretKey;
+@ConfigurationProperties(prefix = "sandbox.security.aes-gcm")
+public class AesGcmProperties {
+    private String secretKey;
+    private String iv;
+    private int tagLength;
 }

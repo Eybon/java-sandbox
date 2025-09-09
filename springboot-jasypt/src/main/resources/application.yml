@@ -1,3 +1,8 @@
 sandbox:
   security:
-    aes-secret-key: "OweR6jOuZ7pa+qk7uRzOCHV5F7xcakWqKJXY3ANysEo="
+    aes:
+      secret-key: "OweR6jOuZ7pa+qk7uRzOCHV5F7xcakWqKJXY3ANysEo="
+    aes-gcm:
+      secret-key: "w2T93GooZ4LAsmnKCTKKf1zKYs9rmCFt"
+      iv: "1234567890ABCDEF"
+      tag-length: 128

@@ -49,8 +49,11 @@ Launchers configurés sur les différents ports :
 
 Test des méthodes d'encryptage/decryptage en AES-256 via la librairie jasypt.
 
+### AES-256
+
 **Fonctionnement** :
-- L'algorithm AES-256 fonctionne avec une secretKey qui doit être généré en préalable de l'encryptage/decryptage (équivalent d'un password)
+- L'algorithm AES-256 fonctionne avec :
+  - Une `secretKey` qui doit être généré en préalable de l'encryptage/decryptage (équivalent d'un password)
 - Lors d'encryptage, on fournit une chaine de caractère (String) qui sera encrypté, puis encodé en Base64 pour pouvoir être exposé/stocké
 - Lors du décryptage, on fournit une chaine de caratère (String) encodé en Base64, qu'on décodera puis décryptera pour récupérer la valeur d'origine
 
@@ -61,4 +64,14 @@ Test des méthodes d'encryptage/decryptage en AES-256 via la librairie jasypt.
 - Mise à jour de la secretKey dans la config `application.yml`
 - Encryptage via l'API http://localhost:8080/api/security/aes/encrypt?data=toEncrypt
 - Decryptage via l'API http://localhost:8080/api/security/aes/decrypt?data=toDecyptBase64
- 
+
+
+### AES-256 - GCM - NoPadding
+
+Tools : https://www.devglan.com/online-tools/aes-encryption-decryption
+
+**Fonctionnement** : 
+- L'algorithm AES/GCM fonctionne avec :
+  - Une `secretKey` qui correspond à une chaine de caractère de taille 32 (équivalent d'un password)
+  - Un `iv` qui correpond à une chaine de caractère de taille 16
+  - Une `tagLength` qui correspond à une taille de tag pour l'algorithm GCM

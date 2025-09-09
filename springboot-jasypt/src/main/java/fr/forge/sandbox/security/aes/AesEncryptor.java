@@ -1,6 +1,5 @@
 package fr.forge.sandbox.security.aes;
 
-import fr.forge.sandbox.security.config.SecurityProperties;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.*;
@@ -13,10 +12,10 @@ import java.util.Base64;
 public class AesEncryptor {
 
     public static final String AES_ALGORITHM = "AES";
-    private final SecurityProperties securityProperties;
+    private final AesProperties properties;
 
-    public AesEncryptor(SecurityProperties securityProperties) {
-        this.securityProperties = securityProperties;
+    public AesEncryptor(AesProperties properties) {
+        this.properties = properties;
     }
 
     public String encrypt(String dataToEncrypt) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
@@ -43,7 +42,7 @@ public class AesEncryptor {
 
     private Cipher initCipher(int cipherMode) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
         // Récupération de la secretKey (password)
-        SecretKey secretKey = new SecretKeySpec(this.base64Decode(securityProperties.getAesSecretKey()), "AES");
+        SecretKey secretKey = new SecretKeySpec(this.base64Decode(properties.getSecretKey()), "AES");
 
         // Initialisation du Cipher pour l'encryptage AES
         Cipher cipher = Cipher.getInstance(AES_ALGORITHM);
