@@ -43,3 +43,22 @@ Test de la librairie "spring-cloud-contract-wiremock"
 Launchers configurés sur les différents ports :
 - Port 8090 -> `Run Wiremock - Port 9080`
 - Port 8091 -> `Run Wiremock - Port 9081`
+
+
+## Module springboot-jasypt
+
+Test des méthodes d'encryptage/decryptage en AES-256 via la librairie jasypt.
+
+**Fonctionnement** :
+- L'algorithm AES-256 fonctionne avec une secretKey qui doit être généré en préalable de l'encryptage/decryptage (équivalent d'un password)
+- Lors d'encryptage, on fournit une chaine de caractère (String) qui sera encrypté, puis encodé en Base64 pour pouvoir être exposé/stocké
+- Lors du décryptage, on fournit une chaine de caratère (String) encodé en Base64, qu'on décodera puis décryptera pour récupérer la valeur d'origine
+
+**Workflow** :
+- Génération d'une secretKey (password)
+  - Soit via l'API http://localhost:8080/api/security/aes/generateKey
+  - Soit en ligne, par exemple : https://www.digitalsanctuary.com/aes-key-generator-free
+- Mise à jour de la secretKey dans la config `application.yml`
+- Encryptage via l'API http://localhost:8080/api/security/aes/encrypt?data=toEncrypt
+- Decryptage via l'API http://localhost:8080/api/security/aes/decrypt?data=toDecyptBase64
+ 
